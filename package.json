@@ -60,7 +60,7 @@
   "license": "MIT",
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown",
-    "**/src/*": "eslint . --ext .js,.jsx,.ts,.tsx"
+    "./src/*.{js,jsx,ts,tsx}": "eslint"
   },
   "husky": {
     "hooks": {
