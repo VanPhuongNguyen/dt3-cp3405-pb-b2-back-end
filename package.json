@@ -2,7 +2,6 @@
   "name": "serverless-boilerplate",
   "version": "1.0.0",
   "description": "Serverless webpack example using Typescript",
-  "main": "handler.js",
   "scripts": {
     "test": "cross-env NODE_ENV=test ./node_modules/.bin/jest --ci --verbose",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
@@ -60,8 +59,9 @@
   "author": "The serverless webpack authors (https://github.com/elastic-coders/serverless-webpack)",
   "license": "MIT",
   "lint-staged": {
-    "**/*": "prettier --write --ignore-unknown",
-    "**/*/*": "eslint . --ext .js,.jsx,.ts,.tsx"
+    "**/*": [
+      "prettier --write --ignore-unknown"
+    ]
   },
   "husky": {
     "hooks": {
