@@ -10,7 +10,6 @@
   ],
   "plugins": ["jest", "@typescript-eslint"],
   "root": true,
-  "globals": {},
   "rules": {
     "import/no-unresolved": [2, { "commonjs": true, "amd": true }],
     "import/prefer-default-export": "off",
@@ -28,8 +27,6 @@
     ]
   },
   "parser": "@typescript-eslint/parser",
-  "env": {},
-  "overrides": [],
   "settings": {
     "import/resolver": {
       "alias": {
