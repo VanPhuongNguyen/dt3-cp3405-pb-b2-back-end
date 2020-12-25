@@ -32,8 +32,7 @@
       "alias": {
         "map": [
           ["@src", "./src"],
-          ["@tests", "./tests"],
-          ["@queries", "./queries"]
+          ["@tests", "./tests"]
         ],
         "extensions": [".ts", ".js"]
       }

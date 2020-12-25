@@ -2,7 +2,7 @@
 const path = require('path');
 const slsw = require('serverless-webpack');
 const nodeExternals = require('webpack-node-externals');
-// const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 module.exports = {
   context: __dirname,
@@ -17,7 +17,6 @@ module.exports = {
     cacheWithContext: false,
     alias: {
       '@src': path.resolve(__dirname, './src'),
-      '@queries': path.resolve(__dirname, './queries'),
       '@tests': path.resolve(__dirname, './tests'),
     },
   },
@@ -52,11 +51,8 @@ module.exports = {
     ],
   },
   plugins: [
-    // new ForkTsCheckerWebpackPlugin({
-    //   eslint: true,
-    //   eslintOptions: {
-    //     cache: true
-    //   }
-    // })
+    new ForkTsCheckerWebpackPlugin({
+      eslint: true,
+    }),
   ],
 };
