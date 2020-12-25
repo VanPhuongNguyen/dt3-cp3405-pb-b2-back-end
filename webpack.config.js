@@ -50,9 +50,5 @@ module.exports = {
       },
     ],
   },
-  plugins: [
-    new ForkTsCheckerWebpackPlugin({
-      eslint: true,
-    }),
-  ],
+  plugins: [new ForkTsCheckerWebpackPlugin()],
 };
