@@ -6,7 +6,7 @@ custom:
     webpackConfig: ./webpack.config.js
     includeModules: true
   serverless-iam-roles-per-function:
-    defaultInherit: true *# Each function will inherit the service level roles too.
+    defaultInherit: true # Each function will inherit the service level roles too.
   globalTables:
     regions:
       - us-east-2
