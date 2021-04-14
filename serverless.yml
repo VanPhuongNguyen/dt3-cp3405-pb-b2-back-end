@@ -1,5 +1,5 @@
 service:
-  name: typescript-serverless
+  name: dt3-backend
 
 custom:
   webpack:
@@ -7,20 +7,17 @@ custom:
     includeModules: true
   serverless-iam-roles-per-function:
     defaultInherit: true # Each function will inherit the service level roles too.
-  globalTables:
-    regions:
-      - us-east-2
-      - ap-southeast-1
-    createStack: false
   prune: # automatically prune old lambda versions
     automatic: true
     number: 3
+  apigwBinary:
+    types:
+      - 'multipart/form-data'
 
 plugins:
   - serverless-offline
   - serverless-webpack
   - serverless-iam-roles-per-function
-  - serverless-create-global-dynamodb-table
   - serverless-prune-plugin
 
 provider:
@@ -35,6 +32,8 @@ provider:
     DEBUG: '*'
     NODE_ENV: ${self:provider.stage}
     AWS_NODEJS_CONNECTION_REUSE_ENABLED: 1
+    MONGO_URL: ${file(config/env.yml):MONGO_URL}
+    JWT_SECRET: ${file(config/env.yml):JWT_SECRET}
   tracing:
     lambda: true
     apiGateway: true
@@ -43,12 +42,9 @@ provider:
       Action:
         - xray:PutTraceSegments
         - xray:PutTelemetryRecords
+        - 's3:GetObject'
+        - 's3:PutObject'
       Resource: '*'
 
 functions:
-  hello:
-    handler: src/handlers/hello.handler
-    events:
-      - http:
-          method: get
-          path: hello
+  - ${file(functionsYML/users.yml)}
